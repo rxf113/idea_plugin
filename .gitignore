@@ -19,6 +19,7 @@ target/
 *.iml
 *.ipr
 *.jar
+out
 
 ### NetBeans ###
 /nbproject/private/
