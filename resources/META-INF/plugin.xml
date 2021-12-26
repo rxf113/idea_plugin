@@ -7,9 +7,9 @@
     <![CDATA[
      <p>author:rxf113</p>
      <p>小写转大写  Lowercase to uppercase</p>
-     <p>大写转小写 uppercase to lowercase</p>
-     <p>驼峰转下划线 uppercase to lowercase</p>
-     <p>下划线转驼峰 uppercase to lowercase</p>
+     <p>大写转小写 Uppercase to lowercase</p>
+     <p>驼峰转下划线 Hump ​​to underline</p>
+     <p>下划线转驼峰 underline to Hump</p>
      <p>其他工能持续集成</p>
     ]]>
   </description>
