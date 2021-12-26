@@ -1,8 +1,8 @@
-##idea插件开发
+idea插件开发
 
 -------
 
-###目前有四个简单功能,可以直接下载使用
+### 目前有四个简单功能,可以直接下载使用
 
 - 小写转大写  Lowercase to uppercase
 - 大写转小写 uppercase to lowercase
