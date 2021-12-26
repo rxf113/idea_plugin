@@ -1,4 +1,4 @@
-idea插件开发
+## idea插件开发
 
 -------
 
@@ -9,4 +9,4 @@ idea插件开发
 - 驼峰转下划线 uppercase to lowercase
 - 下划线转驼峰 uppercase to lowercase
 
-###慢慢探索下新功能
+### 慢慢探索下新功能
