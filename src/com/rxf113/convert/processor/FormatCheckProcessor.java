@@ -5,7 +5,7 @@ package com.rxf113.convert.processor;
  *
  * @author rxf113
  */
-public interface FormatCheckProcessor extends RowProcessor {
+public interface FormatCheckProcessor {
 
     /**
      * 校验

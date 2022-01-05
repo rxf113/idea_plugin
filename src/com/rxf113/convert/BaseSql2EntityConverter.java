@@ -2,8 +2,9 @@ package com.rxf113.convert;
 
 import com.rxf113.convert.processor.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 基础实现
@@ -37,8 +38,7 @@ public class BaseSql2EntityConverter implements Sql2EntityFieldsConverter {
     public String convert(String sqlStr) {
         if (formatCheckProcessor.check(sqlStr)) {
             String[] rows = sqlStr.split(",");
-            List<FieldModel> fieldModels = new ArrayList<>(4);
-            for (String row : rows) {
+            List<FieldModel> fieldModels = Arrays.stream(rows).map(row -> {
                 FieldModel fieldModel = new FieldModel();
                 //修饰符
                 fieldModel.setModifier(modifierProcessor.process(row));
@@ -48,7 +48,8 @@ public class BaseSql2EntityConverter implements Sql2EntityFieldsConverter {
                 fieldModel.setFieldName(fieldNameProcessor.process(row));
                 //注释
                 fieldModel.setComment(commentProcessor.process(row));
-            }
+                return fieldModel;
+            }).collect(Collectors.toList());
             return fieldModelFormatter.formatAll(fieldModels);
 
         } else {
