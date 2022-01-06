@@ -6,4 +6,5 @@ package com.rxf113.convert.processor;
  * @author rxf113
  */
 public interface FieldNameProcessor extends RowProcessor {
+
 }

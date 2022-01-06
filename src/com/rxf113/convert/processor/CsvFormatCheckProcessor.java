@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 public class CsvFormatCheckProcessor implements FormatCheckProcessor {
 
-    static final Pattern ROW_PATTERN = Pattern.compile("^\\s*\\w+\\s+\\w+(\\s+\\w+)?\\s*$");
+    static final Pattern ROW_PATTERN = Pattern.compile("^\\s*\\w+\\s\\w+(\\s\\w+)?\\s*$");
 
     @Override
     public boolean check(String sqlStr) {

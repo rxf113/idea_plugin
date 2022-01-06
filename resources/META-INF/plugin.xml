@@ -33,12 +33,17 @@
       </action>
 
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action id="Hump2UnderLine" class="com.rxf113.Hump2UnderLine" text="Hump2UnderLine" description="Hump2UnderLine 驼峰转下划线">
+      <action id="Hump2UnderLine" class="com.rxf113.Hump2UnderLineAction" text="Hump2UnderLine" description="Hump2UnderLine 驼峰转下划线">
         <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl H"/>
       </action>
 
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action id="UnderLine2Hump" class="com.rxf113.UnderLine2Hump" text="UnderLine2Hump" description="UnderLine2Hump 下划线转驼峰">
+      <action id="UnderLine2Hump" class="com.rxf113.UnderLine2HumpAction" text="UnderLine2Hump" description="UnderLine2Hump 下划线转驼峰">
+        <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl K"/>
+      </action>
+
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <action id="TextBoxes" class="TextBoxes" text="TextBoxes" description="UnderLine2Hump 下划线转驼峰">
         <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl K"/>
       </action>
     </group>

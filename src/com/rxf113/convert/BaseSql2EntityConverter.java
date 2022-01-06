@@ -23,37 +23,55 @@ public class BaseSql2EntityConverter implements Sql2EntityFieldsConverter {
 
     private final FormatCheckProcessor formatCheckProcessor;
 
-    private final FieldModelFormatter fieldModelFormatter;
+    private final FieldModelFormatProcessor fieldModelFormatProcessor;
 
-    public BaseSql2EntityConverter(FieldModelFormatter fieldModelFormatter, ModifierProcessor modifierProcessor, VariableTypeProcess variableTypeProcess, FieldNameProcessor fieldNameProcessor, CommentProcessor commentProcessor, FormatCheckProcessor formatCheckProcessor) {
+    public BaseSql2EntityConverter(FieldModelFormatProcessor fieldModelFormatProcessor, ModifierProcessor modifierProcessor, VariableTypeProcess variableTypeProcess, FieldNameProcessor fieldNameProcessor, CommentProcessor commentProcessor, FormatCheckProcessor formatCheckProcessor) {
         this.modifierProcessor = modifierProcessor;
         this.variableTypeProcess = variableTypeProcess;
         this.fieldNameProcessor = fieldNameProcessor;
         this.commentProcessor = commentProcessor;
         this.formatCheckProcessor = formatCheckProcessor;
-        this.fieldModelFormatter = fieldModelFormatter;
+        this.fieldModelFormatProcessor = fieldModelFormatProcessor;
     }
 
     @Override
     public String convert(String sqlStr) {
-        if (formatCheckProcessor.check(sqlStr)) {
+      //  if (formatCheckProcessor.check(sqlStr)) {
             String[] rows = sqlStr.split(",");
-            List<FieldModel> fieldModels = Arrays.stream(rows).map(row -> {
-                FieldModel fieldModel = new FieldModel();
-                //修饰符
-                fieldModel.setModifier(modifierProcessor.process(row));
-                //变量类型
-                fieldModel.setVariableType(variableTypeProcess.process(row));
-                //变量名
-                fieldModel.setFieldName(fieldNameProcessor.process(row));
-                //注释
-                fieldModel.setComment(commentProcessor.process(row));
-                return fieldModel;
-            }).collect(Collectors.toList());
-            return fieldModelFormatter.formatAll(fieldModels);
+            List<FieldModel> fieldModels = Arrays.stream(rows)
+                    .map(row -> row.replace("\\n", "").replaceAll("\\s+", " ").trim())
+                    .map(row -> {
+                        FieldModel fieldModel = new FieldModel();
+                        //修饰符
+                        fieldModel.setModifier(modifierProcessor.process(row));
+                        //变量类型
+                        fieldModel.setVariableType(variableTypeProcess.process(row));
+                        //变量名
+                        fieldModel.setFieldName(fieldNameProcessor.process(row));
+                        //注释
+                        fieldModel.setComment(commentProcessor.process(row));
+                        return fieldModel;
+                    }).collect(Collectors.toList());
+            return fieldModelFormatProcessor.formatAll(fieldModels);
 
-        } else {
-            throw new IllegalArgumentException("参数格式不支持");
-        }
+//        } else {
+//            throw new IllegalArgumentException("参数格式不支持");
+//        }
+    }
+
+    public static void main(String[] args) {
+        BaseSql2EntityConverter sql2EntityConverter = new BaseSql2EntityConverter(
+                new BaseFieldModelFormatProcessor(),
+                new BaseModifierProcessor(),
+                new BaseVariableTypeProcess(),
+                new BaseFieldNameProcessor(),
+                new BaseCommentProcessor(),
+                new CsvFormatCheckProcessor());
+        String convert = sql2EntityConverter.convert("node_name           varchar(64)  null comment '节点名称',\n" +
+                "    detail              varchar(255) null comment '详情',\n" +
+                "    process_instance_id varchar(64)  null comment '流程实例id',\n" +
+                "    task_def_key        varchar(64)  null,\n" +
+                "    tenant_id           varchar(16)  null comment '租戶id'");
+        System.out.println(convert);
     }
 }

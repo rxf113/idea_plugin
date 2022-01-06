@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * author rxf113
  **/
-public class UnderLine2Hump extends AnAction {
+public class Hump2UnderLineAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
         Editor editor = anActionEvent.getData(PlatformDataKeys.EDITOR);
@@ -22,7 +22,7 @@ public class UnderLine2Hump extends AnAction {
         WriteCommandAction.runWriteCommandAction(anActionEvent.getData(PlatformDataKeys.PROJECT), new Runnable() {
             @Override
             public void run() {
-                editor.getDocument().replaceString(editor.getSelectionModel().getSelectionStart(), editor.getSelectionModel().getSelectionEnd(), TransUtil.underLine2Hump(selectedText));
+                editor.getDocument().replaceString(editor.getSelectionModel().getSelectionStart(), editor.getSelectionModel().getSelectionEnd(), TransUtil.hump2UnderLine(selectedText));
             }
         });
     }
