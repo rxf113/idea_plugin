@@ -21,12 +21,12 @@ public class BaseVariableTypeProcess implements VariableTypeProcess {
 
     static final Pattern DB_TYPE_PATTERN = Pattern.compile("\\s*\\w+\\s(\\w+)");
 
-    static final Map<String, String> DB_TYPE_2_JAVA_TYPE = new HashMap<>();
+    static final Map<String, String> DB_TYPE_2_JAVA_TYPE = new HashMap<>(16,1);
 
     static {
         //加载配置
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("resources\\db.yml"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("db.yml"));
             Properties properties = new Properties();
             properties.load(bufferedReader);
             properties.forEach((k, v) -> {

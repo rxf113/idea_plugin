@@ -3,15 +3,14 @@ package com.rxf113;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Editor;
 import com.rxf113.utils.TransUtil;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * author rxf113
- **/
+ * @author 11313
+ */
 public class UnderLine2HumpAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
@@ -23,7 +22,6 @@ public class UnderLine2HumpAction extends AnAction {
         WriteCommandAction.runWriteCommandAction(anActionEvent.getData(CommonDataKeys.PROJECT), new Runnable() {
             @Override
             public void run() {
-
                 editor.getDocument().replaceString(editor.getSelectionModel().getSelectionStart(), editor.getSelectionModel().getSelectionEnd(), TransUtil.underLine2Hump(selectedText));
             }
         });

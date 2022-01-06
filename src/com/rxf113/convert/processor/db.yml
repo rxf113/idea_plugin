@@ -1,0 +1,6 @@
+# java数据类型 和 数据库字段类型 对应关系
+mysql:
+  Interger: tinyint,smallint,mediumint,int,bigint
+  LocalDateTime: time,date,datetime,timestamp
+  Double: float,double
+  String: set,enum,blob,text,varchar,char
