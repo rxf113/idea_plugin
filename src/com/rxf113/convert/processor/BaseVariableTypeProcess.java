@@ -1,15 +1,11 @@
 package com.rxf113.convert.processor;
 
 
-import org.apache.commons.lang.StringUtils;
+import com.google.common.collect.Lists;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Properties;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -21,25 +17,27 @@ public class BaseVariableTypeProcess implements VariableTypeProcess {
 
     static final Pattern DB_TYPE_PATTERN = Pattern.compile("\\s*\\w+\\s(\\w+)");
 
-    static final Map<String, String> DB_TYPE_2_JAVA_TYPE = new HashMap<>(16,1);
+    static final Map<String, String> DB_TYPE_2_JAVA_TYPE = new HashMap<>(16, 1);
+
+    static final Map<String, List<String>> MYSQL_TYPE = new HashMap<>(16, 1);
+
 
     static {
-        //加载配置
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("db.yml"));
-            Properties properties = new Properties();
-            properties.load(bufferedReader);
-            properties.forEach((k, v) -> {
-                if (StringUtils.isNotBlank((String) v)) {
-                    String[] vals = v.toString().split(",");
-                    for (String val : vals) {
-                        DB_TYPE_2_JAVA_TYPE.put(val, (String) k);
-                    }
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //整型
+        MYSQL_TYPE.put("Integer",
+                Lists.newArrayList("tinyint", "smallint", "mediumint", "int", "bigint"));
+        //浮点
+        MYSQL_TYPE.put("Double", Lists.newArrayList("float", "double"));
+        //time
+        MYSQL_TYPE.put("LocalDateTime", Lists.newArrayList("time", "date", "datetime", "timestamp"));
+        //string
+        MYSQL_TYPE.put("String", Lists.newArrayList("set", "enum", "blob", "text", "varchar", "char"));
+
+        MYSQL_TYPE.forEach((k, v) -> {
+            for (String type : v) {
+                DB_TYPE_2_JAVA_TYPE.put(type, k);
+            }
+        });
     }
 
     @Override
