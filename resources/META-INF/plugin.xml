@@ -1,46 +1,53 @@
 <idea-plugin>
-  <id>org.example.demo</id>
-  <name>rxf113Utils</name>
-  <vendor email="1131310577@qq.com" url="http://www.rxf113.xyz">rxf113</vendor>
-  <version>0.0.1</version>
-  <description>
-    <![CDATA[
+    <id>io.github.rxf113</id>
+    <name>rxf113Utils</name>
+    <vendor email="1131310577@qq.com" url="http://www.rxf113.xyz">rxf113</vendor>
+    <version>0.0.2</version>
+    <description>
+        <![CDATA[
      <p>author:rxf113</p>
      <p>小写转大写  Lowercase to uppercase</p>
      <p>大写转小写 Uppercase to lowercase</p>
      <p>驼峰转下划线 Hump ​​to underline</p>
      <p>下划线转驼峰 Underline to Hump</p>
+     <p>mysql ddl 数据字段 转 java 实体字段</p>
      <p>其他工能持续集成</p>
     ]]>
-  </description>
+    </description>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-    <group id="MaiGroup" text="Rxf113Utils" description="Rxf113Utils" popup="true" icon="/icon/b.png">
+    <actions>
+        <!-- Add your actions here -->
+        <group id="MaiGroup" text="Rxf113Utils" description="Rxf113Utils" popup="true" icon="/icon/b.png">
 
-      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action id="ToUppercase" class="com.rxf113.ToUppercaseAction" text="ToUppercase" description="LowerCaseToUppercase 转大写">
-        <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl U"/>
-      </action>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <action id="ToUppercase" class="com.rxf113.ToUppercaseAction" text="ToUppercase"
+                    description="LowerCaseToUppercase 转大写">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl U"/>
+            </action>
 
-      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action id="ToLowercase" class="com.rxf113.ToLowercaseAction" text="ToLowercase" description="UppercaseToLowerCase 转小写">
-        <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl L"/>
-      </action>
+            <action id="ToLowercase" class="com.rxf113.ToLowercaseAction" text="ToLowercase"
+                    description="UppercaseToLowerCase 转小写">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl L"/>
+            </action>
 
-      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action id="Hump2UnderLine" class="com.rxf113.Hump2UnderLine" text="Hump2UnderLine" description="Hump2UnderLine 驼峰转下划线">
-        <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl H"/>
-      </action>
+            <action id="Hump2UnderLine" class="com.rxf113.Hump2UnderLineAction" text="Hump2UnderLine"
+                    description="Hump2UnderLine 驼峰转下划线">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl H"/>
+            </action>
 
-      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-      <action id="UnderLine2Hump" class="com.rxf113.UnderLine2Hump" text="UnderLine2Hump" description="UnderLine2Hump 下划线转驼峰">
-        <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl K"/>
-      </action>
-    </group>
-  </actions>
+            <action id="UnderLine2Hump" class="com.rxf113.UnderLine2HumpAction" text="UnderLine2Hump"
+                    description="UnderLine2Hump 下划线转驼峰">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl K"/>
+            </action>
+
+            <action id="MySql2Fields" class="com.rxf113.MySql2FieldsAction" text="MySql2Fields"
+                    description="Sql2Fields mysql转实体字段">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl C"/>
+            </action>
+        </group>
+    </actions>
 </idea-plugin>
