@@ -10,3 +10,7 @@
 - 下划线转驼峰 Underline to Hump
 
 ### 慢慢探索下新功能
+
+- 2022-01-06,新增mysql ddl 字段生成java实体字段
+
+![image-20210421221850807](https://rxf113.xyz/static/ideaPluginTest.gif)
