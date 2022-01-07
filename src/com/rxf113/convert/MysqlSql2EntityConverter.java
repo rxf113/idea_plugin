@@ -77,20 +77,4 @@ public class MysqlSql2EntityConverter implements Sql2EntityFieldsConverter {
                 }).collect(Collectors.toList());
         return fieldModelFormatProcessor.formatAll(fieldModels);
     }
-
-    public static void main(String[] args) {
-        MysqlSql2EntityConverter sql2EntityConverter = new MysqlSql2EntityConverter(
-                new BaseFieldModelFormatProcessor(),
-                new BaseModifierProcessor(),
-                new BaseVariableTypeProcess(),
-                new BaseFieldNameProcessor(),
-                new BaseCommentProcessor(),
-                new CsvFormatCheckProcessor());
-        String convert = sql2EntityConverter.convert("node_name           varchar(64)  null comment '节点名称',\n" +
-                "    detail              varchar(255) null comment '详情',\n" +
-                "    process_instance_id varchar(64)  null comment '流程实例id',\n" +
-                "    task_def_key        varchar(64)  null,\n" +
-                "    tenant_id           varchar(16)  null comment '租戶id'");
-        System.out.println(convert);
-    }
 }
