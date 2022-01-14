@@ -16,3 +16,5 @@
 - 2022-01-06 新增mysql ddl 字段生成java实体字段
 
 ![image-20210421221850807](https://rxf113.xyz/static/mysql2JavaType.gif)
+
+- 2022-01-14 准备新功能，idea http-request 转 curl
