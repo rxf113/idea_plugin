@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 public class BaseCommentProcessor implements CommentProcessor {
 
-    static final Pattern COMMENT_PATTERN = Pattern.compile(".*comment\\s'(.*)'$");
+    static final Pattern COMMENT_PATTERN = Pattern.compile(".*[comment|COMMENT]\\s(.*)$");
 
 
     @Override

@@ -14,6 +14,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author 11313

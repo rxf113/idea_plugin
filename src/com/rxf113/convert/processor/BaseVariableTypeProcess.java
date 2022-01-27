@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 public class BaseVariableTypeProcess implements VariableTypeProcess {
 
-    static final Pattern DB_TYPE_PATTERN = Pattern.compile("\\s*\\w+\\s(\\w+)");
+    static final Pattern DB_TYPE_PATTERN = Pattern.compile("^\\s*\\w+\\s(\\w+)");
 
     static final Map<String, String> DB_TYPE_2_JAVA_TYPE = new HashMap<>(16, 1);
 
