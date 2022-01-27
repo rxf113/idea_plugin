@@ -62,7 +62,7 @@ public class MysqlSql2EntityConverter implements Sql2EntityFieldsConverter {
     public String convert(String sqlStr) {
         String[] rows = sqlStr.split(",");
         List<FieldModel> fieldModels = Arrays.stream(rows)
-                .map(row -> row.replace("\\n", "").replaceAll("\\s+", " ").trim())
+                .map(row -> row.replace("\\n", "").replaceAll("\\s+", " ").replaceAll("[`']","").trim())
                 .map(row -> {
                     FieldModel fieldModel = new FieldModel();
                     //修饰符
