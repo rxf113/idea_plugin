@@ -20,6 +20,7 @@ public class CsvFormatCheckProcessor implements FormatCheckProcessor {
         if (sqlStr == null || "".equals(sqlStr.trim())) {
             return false;
         }
+        sqlStr = sqlStr.replaceAll("[`']","");
         sqlStr = sqlStr.replaceAll("(.*)\\n(.*)", "$1 $2");
 
         String[] rows = sqlStr.split(",");
