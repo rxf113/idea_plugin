@@ -25,4 +25,4 @@
 
 
 - <div id="p2yml">2022-03-08 新增 properties转为yml格式</div>
-- ![图片加载失败](https://rxf113.xyz/static/properties2Yml.gif)
+![图片加载失败](https://rxf113.xyz/static/properties2Yml.gif)
