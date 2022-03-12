@@ -49,6 +49,11 @@
                     description="Sql2Fields">
                 <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl C"/>
             </action>
+
+            <action id="Properties2Yml" class="com.rxf113.Properties2YmlAction" text="Properties2Yml"
+                    description="Properties2Yml">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl M"/>
+            </action>
         </group>
     </actions>
 </idea-plugin>
