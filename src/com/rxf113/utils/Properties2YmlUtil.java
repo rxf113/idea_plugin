@@ -27,10 +27,14 @@ public class Properties2YmlUtil {
 
     public static String properties2YmlStr(String proStr) {
         //按行拆分properties字符串
-        String[] proStrArr = proStr.split("\\s+");
+        String[] proStrArr = proStr.split("\\n");
         Map<String, Object> globalMap = new HashMap<>(8, 1);
         for (String line : proStrArr) {
-            recMap(line, globalMap);
+            //排除注释
+            if(!line.matches("^\\s*$") && !line.matches("^\\s*#.*$")){
+                recMap(line, globalMap);
+            }
+
         }
         return extractVal(globalMap, 0);
     }
