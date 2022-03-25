@@ -1,5 +1,6 @@
 package com.rxf113.utils;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 
 import java.util.HashMap;
@@ -76,12 +77,12 @@ public class Properties2YmlUtil {
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
-            sb.append(" ".repeat(blankSpace));
+            sb.append(Strings.repeat(" ",blankSpace));
             sb.append(key).append(":");
             if (!(value instanceof String)) {
                 sb.append("\r\n").append(extractVal((Map<String, Object>) value, blankSpace + 1));
             } else {
-                sb.append(" ").append(value).append("\r\n".repeat(2));
+                sb.append(" ").append(value).append(Strings.repeat("\r\n",2));
             }
         }
         return sb.toString();
