@@ -77,12 +77,15 @@ public class Properties2YmlUtil {
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
+            if (blankSpace == 0 && sb.length() > 0){
+                sb.append("\r\n");
+            }
             sb.append(Strings.repeat(" ",blankSpace));
             sb.append(key).append(":");
             if (!(value instanceof String)) {
                 sb.append("\r\n").append(extractVal((Map<String, Object>) value, blankSpace + 1));
             } else {
-                sb.append(" ").append(value).append(Strings.repeat("\r\n",2));
+                sb.append(" ").append(value).append("\r\n");
             }
         }
         return sb.toString();
