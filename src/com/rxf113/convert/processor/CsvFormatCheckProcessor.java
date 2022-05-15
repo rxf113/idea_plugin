@@ -30,9 +30,4 @@ public class CsvFormatCheckProcessor implements FormatCheckProcessor {
         }
         return true;
     }
-
-    public static void main(String[] args) {
-        new CsvFormatCheckProcessor().check("    status   tinyint     null comment '1,包括,2排除',\n" +
-                "    val      varchar(64) null comment '具体的值'");
-    }
 }
