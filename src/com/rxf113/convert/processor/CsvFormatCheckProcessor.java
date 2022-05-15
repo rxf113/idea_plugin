@@ -21,14 +21,18 @@ public class CsvFormatCheckProcessor implements FormatCheckProcessor {
             return false;
         }
         sqlStr = sqlStr.replaceAll("[`']","");
-        sqlStr = sqlStr.replaceAll("(.*)\\n(.*)", "$1 $2");
-
-        String[] rows = sqlStr.split(",");
+        String[] rows = sqlStr.split("\n");
         for (String row : rows) {
+            row = row.replaceAll("(.*)\\n(.*)", "$1 $2");
             if (!ROW_PATTERN.matcher(row).matches()) {
                 return false;
             }
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        new CsvFormatCheckProcessor().check("    status   tinyint     null comment '1,包括,2排除',\n" +
+                "    val      varchar(64) null comment '具体的值'");
     }
 }
