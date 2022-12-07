@@ -3,7 +3,7 @@
     <name>rxf113Utils</name>
     <vendor email="1131310577@qq.com" url="http://www.rxf113.xyz">rxf113</vendor>
     <version>0.0.4.3</version>
-    <idea-version since-build="193" until-build="221.*"/>
+    <idea-version since-build="193" until-build="223.*"/>
     <depends>com.intellij.java</depends>
     <description>
         <![CDATA[
