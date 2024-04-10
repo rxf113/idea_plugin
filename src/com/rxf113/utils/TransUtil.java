@@ -42,12 +42,16 @@ public class TransUtil {
     public static String hump2UnderLine(String originStr) {
         char[] chars = originStr.toCharArray();
         StringBuilder sb = new StringBuilder(chars.length + chars.length / 2);
-        sb.append(chars[0]);
-        for (int i = 1; i < chars.length; i++) {
+        for (int i = 0; i < chars.length; i++) {
             char currentChar = chars[i];
             if (Character.isUpperCase(currentChar)) {
+                if (sb.length() > 0
+                        && ((i > 0 && Character.isLowerCase(chars[i - 1]))
+                        || (i < chars.length - 1 && Character.isLowerCase(chars[i + 1])))) {
+                    sb.append("_");
+                }
                 currentChar = Character.toLowerCase(currentChar);
-                sb.append("_");
+
             }
             sb.append(currentChar);
         }
