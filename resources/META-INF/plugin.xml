@@ -2,7 +2,7 @@
     <id>io.github.rxf113</id>
     <name>rxf113Utils</name>
     <vendor email="1131310577@qq.com" url="http://www.rxf113.xyz">rxf113</vendor>
-    <version>0.0.4.7</version>
+    <version>0.0.4.8</version>
     <idea-version since-build="193" until-build="241.*"/>
     <depends>com.intellij.java</depends>
     <description>
